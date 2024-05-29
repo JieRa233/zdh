@@ -72,7 +72,7 @@ wd.quit()
 """
 
 
-
+"""
 #切换窗口
 
 wd.get('https://cdn2.byhy.net/files/selenium/sample3.html')
@@ -99,7 +99,7 @@ wd.find_element(By.ID,'outerbutton').click()
 input('')
 
 
-
+"""
 
 
 

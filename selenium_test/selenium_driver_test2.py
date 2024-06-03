@@ -103,7 +103,7 @@ input('')
 """
 
 
-"""
+
 
 #选择框
 
@@ -143,18 +143,3 @@ select.select_by_visible_text("小雷老师")
 select.select_by_visible_text("小凯老师")
 
 input('')
-
-"""
-
-
-
-
-#
-
-
-
-
-
-
-
-

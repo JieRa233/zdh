@@ -1,5 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+# 导入Select类
+from selenium.webdriver.support.ui import Select
 #环境变量已经配置
 wd = webdriver.Chrome()
 wd.implicitly_wait(5)
@@ -71,7 +73,7 @@ wd.quit()
 
 """
 
-
+"""
 
 #切换窗口
 
@@ -98,19 +100,56 @@ wd.find_element(By.ID,'outerbutton').click()
 
 input('')
 
+"""
+
+
+"""
+
+#选择框
+
+#radio：
+
+wd.get('https://cdn2.byhy.net/files/selenium/test2.html')
+# 获取当前选中的元素，选择checked是“checked”状态的元素，checked对radio和checkbox类型的input有效
+element = wd.find_element(By.CSS_SELECTOR,'#s_radio input[name="teacher"]:checked')
+#打印选择元素中的内容
+print('当前选中的是: ' + element.get_attribute('value'))
+# 点选小雷老师
+wd.find_element(By.CSS_SELECTOR,'#s_radio input[value="小雷老师"]').click()
+
+#checkbox框：
+
+# 先把已经选中的选项全部点击一下,这里要加s,他们的checked值都是‘checked’
+elements = wd.find_elements(By.CSS_SELECTOR, '#s_checkbox input[name="teacher"]:checked')
+for element in elements:
+    element.click()
+# 再点击小雷老师
+wd.find_element(By.CSS_SELECTOR, "#s_checkbox input[value='小雷老师']").click()
+
+#select单选框：
+
+# 创建Select对象，通过查找ID的方式
+select = Select(wd.find_element(By.ID, "ss_single"))
+# 通过 Select 对象选中小雷老师
+select.select_by_visible_text("小雷老师")
+
+#select多选框：
+# 创建Select对象,通过查找ID的方式
+select = Select(wd.find_element(By.ID, "ss_multi"))
+# 清除所有已经选中的选项
+select.deselect_all()
+# 选择小雷老师 和 小凯老师
+select.select_by_visible_text("小雷老师")
+select.select_by_visible_text("小凯老师")
+
+input('')
+
+"""
 
 
 
 
-
-
-
-
-
-
-
-
-
+#
 
 
 
